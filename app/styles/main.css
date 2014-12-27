@@ -1,9 +1,11 @@
+body {
+    padding-top: 70px;
+}
+
 .remove-entry {
     visibility: hidden;
 }
 tr:hover .remove-entry {
     visibility: visible;
 }
-/*.remove-entry:hover {
-    color: red;
-}*/
+

@@ -1,15 +1,14 @@
 'use strict';
 
-angular.module('FuelLogApp.viewImportCSV', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/ImportCSV', {
-            templateUrl: 'viewImportCSV/viewImportCSV.html',
-            controller: 'ViewImportCSVCtrl'
-        });
-    }])
-
-    .controller('ViewImportCSVCtrl', function($scope, $location, FuelLog) {
+/**
+ * @ngdoc function
+ * @name fuelLogApp.controller:ImportcsvCtrl
+ * @description
+ * # ImportcsvCtrl
+ * Controller of the fuelLogApp
+ */
+angular.module('fuelLogApp')
+  .controller('ImportcsvCtrl', function ($scope, $location, FuelLog) {
         $scope.importCSV = function() {
             $('#CSVFile').parse({
                 config: {
@@ -19,16 +18,19 @@ angular.module('FuelLogApp.viewImportCSV', ['ngRoute'])
                             var row = results.data[i];
 
                             if (!(row[0] ||row[2]))
+			    {
                                 continue;
+                            }
 
                             FuelLog.addEntry(row[0], row[1], row[2], row[3]);
                         }
-                        $location.path('/view1');
+                        $location.path('/');
                         $scope.$apply();
 
                         //console.log("File done:", file, results);
                     }
                 }
-            })
-        }
-    });
+            });
+        };
+
+  });

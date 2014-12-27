@@ -1,25 +1,24 @@
 'use strict';
 
-angular.module('FuelLogApp.view1', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
-
-.controller('View1Ctrl', function($scope, $window, $timeout, FuelLog) {
+/**
+ * @ngdoc function
+ * @name fuelLogApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the fuelLogApp
+ */
+angular.module('fuelLogApp')
+  .controller('MainCtrl', function ($scope, $window, $timeout, FuelLog) {
         $scope.FuelLog = FuelLog;
 
         $scope.addFuelLog = function() {
             FuelLog.addEntry($scope.newDate, $scope.newFuelAmount, $scope.newPrice, $scope.newOdometerReading);
         };
 
-        $scope.plotData = [[[0, 2], [1,5], [5,1]]];
+        $scope.plotData = [[]];
         $scope.plotOptions = {
             xaxis: {
-                mode: "time"
+                mode: 'time'
             },
             yaxes: [{}, { position: 'right'}]
         };
@@ -80,4 +79,4 @@ angular.module('FuelLogApp.view1', ['ngRoute'])
             $scope.$apply();
         });
         SetPlotParentStyle();
-});
+  });

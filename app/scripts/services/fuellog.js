@@ -1,7 +1,14 @@
 'use strict';
 
-angular.module('FuelLogModule', [])
-.factory('FuelLog', [function() {
+/**
+ * @ngdoc service
+ * @name fuelLogApp.FuelLog
+ * @description
+ * # FuelLog
+ * Factory in the fuelLogApp.
+ */
+angular.module('fuelLogApp')
+  .factory('FuelLog', function () {
         var FuelLogEntries = [];
 
         var FuelLog = {};
@@ -22,7 +29,7 @@ angular.module('FuelLogModule', [])
                 if (FuelLogEntries[i].Date < newEntry.Date)
                     break;
 
-                if (FuelLogEntries[i].Date == newEntry.Date && FuelLogEntries[i].FuelAmount < newEntry.FuelAmount)
+                if (FuelLogEntries[i].Date === newEntry.Date && FuelLogEntries[i].FuelAmount < newEntry.FuelAmount)
                     break;
             }
 
@@ -50,13 +57,13 @@ angular.module('FuelLogModule', [])
         };
 
         FuelLog.load = function() {
-            FuelLogEntries = angular.fromJson(localStorage["FuelLog"]);
+            FuelLogEntries = angular.fromJson(localStorage['FuelLog']);
             if (!FuelLogEntries)
                 FuelLogEntries = [];
         };
 
         FuelLog.save = function() {
-            localStorage["FuelLog"] = angular.toJson(FuelLogEntries);
+            localStorage['FuelLog'] = angular.toJson(FuelLogEntries);
         };
 
         FuelLog.download = function()  {
@@ -67,4 +74,4 @@ angular.module('FuelLogModule', [])
         FuelLog.load();
 
         return FuelLog;
-    }]);
+  });

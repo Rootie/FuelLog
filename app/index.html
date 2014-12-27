@@ -1,27 +1,22 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="FuelLogApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="FuelLogApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="FuelLogApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="FuelLogApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Benzinverbrauch</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-    <style type="text/css">
-        body {
-            padding-top: 70px;
-        }
-    </style>
-</head>
-<body>
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Benzinverbrauch</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="fuelLogApp">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavController">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -38,8 +33,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#/view1">Übersicht</a></li>
-                <li><a href="#/view2">Jahresdaten</a></li>
+                <li><a href="#/">Übersicht</a></li>
+                <li><a href="#/YearData">Jahresdaten</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" dropdown>
@@ -55,33 +50,32 @@
     </div><!-- /.container-fluid -->
 </nav>
 
+
   <div id="ng-view" class="container-fluid" ng-view></div>
 
-  <div>Benzinverbrauch: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-i18n/angular-locale_de-de.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/FileSaver/FileSaver.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/FileSaver/FileSaver.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/papaparse.js/papaparse.js"></script>
+    <script src="bower_components/angular-flot/angular-flot.js"></script>
     <script src="bower_components/flot/jquery.flot.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/angular-i18n/angular-locale_de-de.js"></script>
     <script src="bower_components/flot/jquery.flot.time.js"></script>
     <script src="bower_components/flot/jquery.flot.resize.js"></script>
-    <script src="bower_components/angular-flot/angular-flot.js"></script>
+    <!-- endbuild -->
 
-    <script src="app.js"></script>
-    <script src="view1/view1.js"></script>
-    <script src="view2/view2.js"></script>
-    <script src="viewImportCSV/viewImportCSV.js"></script>
-    <script src="components/FuelLog/FuelLog.js"></script>
-    <script src="components/version/version.js"></script>
-    <script src="components/version/version-directive.js"></script>
-    <script src="components/version/interpolate-filter.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/services/fuellog.js"></script>
+        <script src="scripts/controllers/importcsv.js"></script>
+        <!-- endbuild -->
 </body>
 </html>
